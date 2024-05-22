@@ -29,7 +29,7 @@ pub(crate) enum Expression<'src> {
   Conditional {
     condition: Condition<'src>,
     then: Box<Expression<'src>>,
-    otherwise: Box<Expression<'src>>,
+    otherwise: Option<Box<Expression<'src>>>,
   },
   /// `(contents)`
   Group { contents: Box<Expression<'src>> },

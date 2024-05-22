@@ -520,8 +520,8 @@ impl<'run, 'src> Parser<'run, 'src> {
 
     self.expect_keyword(Keyword::Else)?;
 
-    let otherwise = if self.accepted_keyword(Keyword::If)? {
-      self.parse_conditional()?
+    let otherwise: Result<Expression<'src>> = if self.accepted_keyword(Keyword::If)? {
+      self.parse_conditional()
     } else {
       self.expect(BraceL)?;
       let otherwise = self.parse_expression()?;
